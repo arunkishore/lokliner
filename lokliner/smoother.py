@@ -161,6 +161,33 @@ class Manipulation:
         get_all_distance.sort()
         return get_all_distance[0]
 
+    def remove_consecutive_same_location_no_time(self,
+                                         locations,
+                                         bound=1,
+                                         miles=False):
+
+        new_locations = []
+        remove_locations = []
+        if not locations or len(locations) < 2:
+            return locations
+
+        prev_coords = locations[0]
+        new_locations.append(prev_coords)
+        index = 1
+        for curr_cords in locations[1:]:
+            if curr_cords == prev_coords:
+                remove_locations.append(curr_cords)
+            else:
+                distance = self.calculate_distance(prev_coords, curr_cords)
+                if float(distance) < bound:
+                    remove_locations.append(curr_cords)
+                else:
+                    new_locations.append(curr_cords)
+                    prev_coords = curr_cords
+            index += 1
+
+        return new_locations
+
 
 
 

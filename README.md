@@ -1,11 +1,44 @@
 ### Simplifying location points
 
+#### Introduction
 GPS tracks are collection of latitude, longitude, elevation, accuracy, timestamp etc. But some low-end
-  devices can not provide accurate and reliable GPS tracks. Because of noisy and error prone GPS points, plotting these
-  location tuples or analyzing them can be hard. <br><br>
-We need to clean and process gps tracks before plotting them . Here, we will try to create APIs useful for cleaning,
-    filtering, smoothing, reducing number of points, interpolating etc. these location points.<br><br>
-For now we have distance and snap-to-road api using googlemaps api. Some of approach to reduce to reduce teh number
+devices can not provide accurate and reliable GPS tracks.
+Because of noisy and error prone GPS points, plotting these
+location tuples or analyzing them can be hard. <br><br>
+
+#### Goal
+Our aim is to build all-in-one tool set for location manipulation.
+We will be focusing on following problem:<br>
+1) Calculating the distance travelled in a route as accurate as possible.<br>
+2) Mapping the route travelled as real as possible like smoothining route near curvy paths,
+possible interpolation between to points, avoiding inaccurate points etc.<br>
+3) Reducing number of points to show/depict a route or build a route with
+minimum possible points.<br>
+4) Finding nearby places within a radius.<br>
+5) Route optimization.<br>
+6) Possible paths between two given location.<br>
+7) Snap-to-road or Map-matching.<br>
+8) ETA calculation.<br>
+
+#### Difficulties
+I faced many difficulties while trying to solve above problems. Few of them are below:
+1) Inaccurate points: Tall building , dense forest, bad weather etc. can cause GPS devices
+report inaccurate points. It is sometime hard to distinguish between accurate and inaccurate
+point using the data send by GPS sensor.
+2) Distance calculaltion: Calculation distance accurately can be difficult because of
+inaccurate points. Few wrong points can be much larger then actual distance calculated.
+ Removing points can decrease the distance actual covered.
+3) Interolation: Collecting fewer points when depicted on map doesn't show
+
+#### Work
+
+
+We need to clean and process gps tracks before plotting them .
+Here, we will try to create APIs useful for cleaning,
+    filtering, smoothing, reducing number of points, interpolating etc. these
+    location points.<br><br>
+For now we have distance and snap-to-road api using googlemaps api.
+Some of approach to reduce to reduce the number
 of points can be:<br>
 1) Removing every nth point<br>
 2) Removes consecutive points within certain distance<br>
@@ -40,7 +73,6 @@ locations =  [
 ```
 
 <br>
-
 
 ```
 # Items in time_array should be equal to points in location array

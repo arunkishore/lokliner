@@ -68,5 +68,18 @@ class Snapper:
 
 
 
+    def snap_only_moving_points(self, locations,
+                                per_call=100,
+                                interpolate=True):
+        """
 
+        :param locations: [[(p1,p2),v1]]
+        :param per_call: calls to make with service provider
+        :param interpolate: True, If you want to interpolate in between points
+        :return:
+        """
+        if len(locations) < 1:
+            return locations
 
+        if per_call > 100:
+            per_call = 100
