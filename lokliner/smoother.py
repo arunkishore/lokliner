@@ -22,7 +22,7 @@ class Manipulation:
     def apply_rdp(self,
                   locations,
                   time_array,
-                  epsilon=0.000005,
+                  epsilon=0.0005,
                   algo='iter'):
 
         if len(locations) < 1:
