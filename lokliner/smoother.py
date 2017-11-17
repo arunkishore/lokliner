@@ -22,7 +22,7 @@ class Manipulation:
     def apply_rdp(self,
                   locations,
                   time_array,
-                  epsilon=0.005,
+                  epsilon=0.0005,
                   algo='iter'):
 
         if len(locations) < 1:
@@ -30,6 +30,8 @@ class Manipulation:
 
         new_locations = []
         new_time_array = []
+        print "Arun: epsilon"
+        print epsilon
         after_rdp = rdp(locations, epsilon=epsilon, algo=algo, return_mask=True)
         for index, loc in enumerate(after_rdp):
             if loc is True:
